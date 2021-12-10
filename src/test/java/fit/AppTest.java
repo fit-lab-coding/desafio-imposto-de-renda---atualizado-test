@@ -20,8 +20,10 @@ public class AppTest
         var totalSalary = 3000.00;
         var baseSalaryExpected = 2670.00;
         var dependents = 0;
+
         // act
         var actualBaseSalary = new IrpfCalculator(year, new Person(totalSalary, dependents)).calculateBaseSalary();
+
         // assert
         assertEquals(baseSalaryExpected, actualBaseSalary, 0.01);
     }
@@ -63,6 +65,21 @@ public class AppTest
         var totalSalary = 3500.00;
         var dependents = 2;
         var irpfValueExpected = 62.39;
+
+        // act
+        var actualIrpfValue = new IrpfCalculator(year, new Person(totalSalary, dependents)).calculate();
+
+        // assert
+        assertEquals(irpfValueExpected, actualIrpfValue, 0.01);
+    }
+
+    @Test
+    public void shouldCalculateIrpfValueWithDependentsIn2022() {
+        // arrange
+        var year = 2022;
+        var totalSalary = 3500.00;
+        var dependents = 2;
+        var irpfValueExpected = 60.83;
 
         // act
         var actualIrpfValue = new IrpfCalculator(year, new Person(totalSalary, dependents)).calculate();
