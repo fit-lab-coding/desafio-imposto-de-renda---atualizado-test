@@ -1,10 +1,12 @@
 package fit.application.impl;
 
-public class RateTable {
-    private static final double INSS_VALUE_2021 = 0.11;
+import fit.application.abstracts.RateTable;
+
+public class RateTable2021 implements RateTable {
+    private static final double INSS_VALUE = 0.11;
 
     public double getInssValue(double baseSalary) {
-        return INSS_VALUE_2021 * baseSalary;
+        return INSS_VALUE * baseSalary;
     }
 
     public double getTaxLayer(double baseSalary) {

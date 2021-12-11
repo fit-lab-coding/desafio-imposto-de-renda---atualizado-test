@@ -1,21 +1,21 @@
 package fit.core;
 
-import fit.application.impl.DiscountTable;
-import fit.application.impl.RateTable;
+import fit.application.abstracts.DiscountTable;
+import fit.application.abstracts.RateTable;
+import fit.application.factories.DiscountTableFactory;
+import fit.application.factories.RateTableFactory;
 import fit.domain.Person;
 
 public class IrpfCalculator {
 
-  private int year;
   private Person person;
   private DiscountTable discountTable;
   private RateTable rateTable;
 
   public IrpfCalculator(int year, Person person) {
-    this.year = year;
     this.person = person;
-    this.discountTable = new DiscountTable(year);
-    this.rateTable = new RateTable();
+    this.discountTable = DiscountTableFactory.build(year);
+    this.rateTable = RateTableFactory.build(year);
   }
 
   public double calculateBaseSalary() {
