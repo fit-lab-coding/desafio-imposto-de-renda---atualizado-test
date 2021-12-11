@@ -20,8 +20,10 @@ public class AppTest
         var totalSalary = 3000.00;
         var baseSalaryExpected = 2670.00;
         var dependents = 0;
+
         // act
         var actualBaseSalary = new IrpfCalculator(year, new Person(totalSalary, dependents)).calculateBaseSalary();
+
         // assert
         assertEquals(baseSalaryExpected, actualBaseSalary, 0.01);
     }
@@ -69,5 +71,51 @@ public class AppTest
 
         // assert
         assertEquals(irpfValueExpected, actualIrpfValue, 0.01);
+    }
+
+    @Test
+    public void shouldCalculateIrpfValueWithDependentsIn2022() {
+        // arrange
+        var year = 2022;
+        var totalSalary = 3500.00;
+        var dependents = 2;
+        var irpfValueExpected = 80.63;
+
+        // act
+        var actualIrpfValue = new IrpfCalculator(year, new Person(totalSalary, dependents)).calculate();
+
+        // assert
+        assertEquals(irpfValueExpected, actualIrpfValue, 0.01);
+    }
+
+    @Test
+    public void shouldCalculateInssWith11PercentIn2022()
+    {
+        // arrange
+        var year = 2022;
+        var totalSalary = 3000.00;
+        var baseSalaryExpected = 2550.00;
+        var dependents = 0;
+
+        // act
+        var actualBaseSalary = new IrpfCalculator(year, new Person(totalSalary, dependents)).calculateBaseSalary();
+
+        // assert
+        assertEquals(baseSalaryExpected, actualBaseSalary, 0.01);
+    }
+
+    @Test
+    public void shouldCalculateTotalDiscountValue2022() {
+        // arrange
+        var year = 2022;
+        var totalSalary = 3000.00;
+        var dependents  = 0;
+        var totalDiscountExpected = 1050.00;
+
+        // act
+        var actualDiscountValue = new IrpfCalculator(year, new Person(totalSalary, dependents)).calculateDiscount();
+
+        // assert
+        assertEquals(totalDiscountExpected, actualDiscountValue, 0.01);
     }
 }
