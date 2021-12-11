@@ -3,7 +3,7 @@ package fit.application.impl;
 import fit.application.abstracts.RateTable;
 
 public class RateTable2022 implements RateTable {
-    private static final double INSS_VALUE = 0.11;
+    private static final double INSS_VALUE = 0.15;
 
     public double getInssValue(double baseSalary) {
         return INSS_VALUE * baseSalary;
